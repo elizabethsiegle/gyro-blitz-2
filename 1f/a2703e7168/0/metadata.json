@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.6.1",
+  "checkpoint_id": "1fa2703e7168",
+  "session_id": "c2960e53-4e9f-4439-905a-36912027bd31",
+  "strategy": "manual-commit",
+  "created_at": "2026-05-15T18:42:40.441578Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "src/App.css",
+    "src/App.jsx"
+  ],
+  "agent": "Claude Code",
+  "model": "",
+  "turn_id": "69a9eac36d55",
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 26803,
+    "cache_read_tokens": 158892,
+    "output_tokens": 1557,
+    "api_call_count": 8
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-05-15T18:42:40.438936Z",
+    "agent_lines": 30,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 31,
+    "total_lines_changed": 31,
+    "agent_percentage": 96.7741935483871,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 811,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agents/skills/explain/SKILL.md": 34,
+        ".agents/skills/search/SKILL.md": 70,
+        ".agents/skills/session-handoff/SKILL.md": 120,
+        ".agents/skills/session-to-skill/SKILL.md": 210,
+        ".agents/skills/what-happened/SKILL.md": 333,
+        ".claude/settings.local.json": 9,
+        "skills-lock.json": 35
+      }
+    }
+  ]
+}
