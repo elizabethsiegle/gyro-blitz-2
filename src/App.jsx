@@ -420,6 +420,16 @@ export default function App() {
           onMenu={() => setScreen('menu')}
         />
       )}
+      <footer className="footer">
+        made w/ ❤️ · code👩‍💻:{' '}
+        <a
+          href="https://github.com/elizabethsiegle/gyro-blitz-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/elizabethsiegle/gyro-blitz-2
+        </a>
+      </footer>
     </div>
   )
 }

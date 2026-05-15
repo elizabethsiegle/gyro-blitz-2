@@ -52,6 +52,27 @@ body::before {
   padding: 16px;
 }
 
+.footer {
+  position: fixed;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 7px;
+  color: var(--gold-dark);
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 /* ── Pixel Box ─────────────────────────────────────────────────────────── */
 
 .pixel-box {
