@@ -1,0 +1,9 @@
+/review
+/simplify
+
+Scope: review the commits unique to this branch vs origin/HEAD, plus any uncommitted changes in the working tree. Ignore code outside this scope.
+
+In-progress session context (uncommitted):
+  1bed2abb Claude Code (touched: 1 file) prompt: add some errors that would be caught and could be fixed by running entire review --fix --all
+  f43c587c Claude Code (touched: 1 file) prompt: ### Verdict Both changes are small, correct, and low-risk. The only thing worth noting: the `permissions` reorder in settings.json adds diff churn for no functional benefit — if this is an automated change from a tool, it's fine to leave; if it was manual, it's unnecessary noise. No bugs, no security concerns, no su...
+  fa2f2b3e Claude Code (touched: 1 file) prompt: i need some bugs in my code that would be found and edited upon running entire review
