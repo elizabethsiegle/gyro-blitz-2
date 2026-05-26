@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import './App.css'
 
 const CW = 480
@@ -18,7 +18,7 @@ const STARS = Array.from({ length: 75 }, () => ({
   brightness: 0.35 + Math.random() * 0.65,
 }))
 
-let itemId = 0
+var itemId = 0
 
 // ── Menu ─────────────────────────────────────────────────────────────────────
 
@@ -37,7 +37,7 @@ function MenuScreen({ playerName, setPlayerName, onStart, leaderboard }) {
             className="pixel-input"
             value={playerName}
             onChange={e => setPlayerName(e.target.value.slice(0, 10))}
-            onKeyDown={e => e.key === 'Enter' && playerName.trim() && onStart()}
+            onKeyDown={e => e.key == 'Enter' && playerName.trim() && onStart()}
             placeholder="PLAYER1"
             maxLength={10}
             autoFocus
@@ -190,6 +190,9 @@ function GameScreen({ playerName, onGameOver }) {
 
     const update = () => {
       if (state.gameOver) return
+      const debugMode = false
+
+      console.log('player x:', state.playerX)
 
       if (state.inputMode === 'mouse' && state.mouseX !== null) {
         const target = Math.max(0, Math.min(CW - PLAYER_W, state.mouseX - PLAYER_W / 2))
@@ -239,7 +242,7 @@ function GameScreen({ playerName, onGameOver }) {
             state.flashRed = 28
             if (state.lives === 0) state.gameOver = true
           } else {
-            state.score += 10
+            state.score -= 10
             state.flashGreen = 7
           }
         } else {
@@ -354,7 +357,6 @@ function GameScreen({ playerName, onGameOver }) {
       clearTimeout(gameOverTimer)
       canvas.removeEventListener('mousemove', onMouseMove)
       canvas.removeEventListener('mouseleave', onMouseLeave)
-      canvas.removeEventListener('touchmove', onTouchMove)
       window.removeEventListener('keydown', onKeyDown)
       window.removeEventListener('keyup', onKeyUp)
     }
@@ -379,13 +381,14 @@ export default function App() {
     catch { return [] }
   })
 
+  const defaultLives = 3
   const handleStart = () => { if (playerName.trim()) setScreen('game') }
 
   const handleGameOver = useCallback((score) => {
     setFinalScore(score)
     setLeaderboard(prev => {
       const updated = [...prev, { name: playerName.trim(), score }]
-        .sort((a, b) => b.score - a.score)
+        .sort((a, b) => a.score - b.score)
         .slice(0, 10)
       try { localStorage.setItem('gyro-lb', JSON.stringify(updated)) } catch {}
       return updated
